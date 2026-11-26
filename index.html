@@ -8,13 +8,13 @@
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Caslon+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header class="nav" id="topo">
-    <a class="nav__brand" href="#topo"><img src="assets/monograma.png" alt="C &amp; P" /></a>
+    <a class="nav__brand" href="#topo"><img src="assets/monograma.png" alt="C &amp; P" width="51" height="40" /></a>
     <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu" class="nav__links">
       <a href="#historia">A nossa história</a>
@@ -31,24 +31,16 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="invite"><div class="invite__inner">
-        <img class="invite__solar" src="assets/solar.png" alt="Desenho do Solar de Pancas" />
-        <h1 class="invite__names">Carolina &amp; Pedro</h1>
-        <p class="invite__text">Têm o prazer de vos convidar para a celebração do seu casamento</p>
-        <div class="invite__date">
-          <span class="invite__side">Domingo</span>
-          <span class="invite__day"><small>Julho</small><strong>4</strong><small class="invite__year">2027</small></span>
-          <span class="invite__side">16:30h</span>
-        </div>
-        <p class="invite__place">Solar de Pancas</p>
-        <p class="invite__region">Alenquer, Portugal</p>
-        <a class="pill" href="#rsvp">Confirmar até 4 de maio</a>
-      </div></div>
+      <img class="hero__solar" src="assets/solar.png" width="220" height="60" alt="Desenho do Solar de Pancas" />
+      <p class="hero__eyebrow">Vamos casar!</p>
+      <h1 class="hero__title">Carolina <span>&amp;</span> Pedro</h1>
+      <p class="hero__date">4 de julho de 2027 · Solar de Pancas, Alenquer</p>
       <div class="countdown" id="countdown" aria-live="polite">
         <div><strong data-unit="days">–</strong><span>dias</span></div>
         <div><strong data-unit="hours">–</strong><span>horas</span></div>
         <div><strong data-unit="minutes">–</strong><span>minutos</span></div>
       </div>
+      <a class="btn" href="#rsvp">Confirmar presença</a>
     </section>
 
     <!-- HISTÓRIA -->
@@ -202,12 +194,12 @@
   </main>
 
   <footer class="footer">
-    <img class="footer__monogram" src="assets/monograma.png" alt="C &amp; P" />
+    <img class="footer__monogram" src="assets/monograma.png" alt="C &amp; P" width="84" height="66" />
     <p>Carolina &amp; Pedro · 04.07.2027</p>
     <p class="footer__small">Dúvidas? <a href="#contactos">Fala connosco</a></p>
   </footer>
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+  <script src="config.js?v=3"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
