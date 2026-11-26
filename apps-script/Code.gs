@@ -23,6 +23,7 @@ const HEADERS = [
   "Acompanhantes",
   "Restrições alimentares",
   "Mensagem",
+  "Idioma",
 ];
 
 function doPost(e) {
@@ -43,6 +44,7 @@ function doPost(e) {
       clean(data.guestNames, 300),
       clean(data.diet, 300),
       clean(data.message, 1000),
+      clean(data.lang, 5),
     ];
     sheet.appendRow(row);
 

@@ -4,49 +4,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Carolina &amp; Pedro · 04.07.2027</title>
-  <meta name="description" content="O nosso casamento — informações, programa e confirmação de presença." />
+  <meta name="description" content="O nosso casamento — informações, programa e confirmação de presença." data-i18n-content="meta.description" />
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
+  <!--
+    Traduções: o texto em português está aqui no HTML; o inglês está em translations.js.
+    Cada elemento com data-i18n="chave" é substituído pelo texto dessa chave no idioma escolhido.
+  -->
   <header class="nav" id="topo">
     <a class="nav__brand" href="#topo"><img src="assets/monograma.png" alt="C &amp; P" width="51" height="40" /></a>
-    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu" class="nav__links">
-      <a href="#historia">A nossa história</a>
-      <a href="#programa">Programa</a>
-      <a href="#local">Local</a>
-      <a href="#alojamento">Alojamento</a>
-      <a href="#presentes">Presentes</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contactos">Contactos</a>
-      <a href="#rsvp" class="nav__cta">Confirmar presença</a>
+      <a href="#historia" data-i18n="nav.story">A nossa história</a>
+      <a href="#programa" data-i18n="nav.schedule">Programa</a>
+      <a href="#local" data-i18n="nav.venue">Local</a>
+      <a href="#alojamento" data-i18n="nav.stay">Alojamento</a>
+      <a href="#presentes" data-i18n="nav.gifts">Presentes</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contactos" data-i18n="nav.contacts">Contactos</a>
+      <a href="#rsvp" class="nav__cta" data-i18n="nav.rsvp">Confirmar presença</a>
     </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="nav__toggle" aria-label="Abrir menu" data-i18n-aria-label="nav.open" aria-expanded="false" aria-controls="menu">☰</button>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero">
-      <img class="hero__solar" src="assets/solar.png" width="220" height="60" alt="Desenho do Solar de Pancas" />
-      <p class="hero__eyebrow">Vamos casar!</p>
+      <img class="hero__solar" src="assets/solar.png" width="220" height="60" alt="Desenho do Solar de Pancas" data-i18n-alt="hero.solarAlt" />
+      <p class="hero__eyebrow" data-i18n="hero.eyebrow">Vamos casar!</p>
       <h1 class="hero__title">Carolina <span>&amp;</span> Pedro</h1>
-      <p class="hero__date">4 de julho de 2027 · Solar de Pancas, Alenquer</p>
+      <p class="hero__date" data-i18n="hero.date">4 de julho de 2027 · Solar de Pancas, Alenquer</p>
       <div class="countdown" id="countdown" aria-live="polite">
-        <div><strong data-unit="days">–</strong><span>dias</span></div>
-        <div><strong data-unit="hours">–</strong><span>horas</span></div>
-        <div><strong data-unit="minutes">–</strong><span>minutos</span></div>
+        <div><strong data-unit="days">–</strong><span data-i18n="countdown.days">dias</span></div>
+        <div><strong data-unit="hours">–</strong><span data-i18n="countdown.hours">horas</span></div>
+        <div><strong data-unit="minutes">–</strong><span data-i18n="countdown.minutes">minutos</span></div>
       </div>
-      <a class="btn" href="#rsvp">Confirmar presença</a>
+      <a class="btn" href="#rsvp" data-i18n="nav.rsvp">Confirmar presença</a>
     </section>
 
     <!-- HISTÓRIA -->
     <section class="section" id="historia">
-      <h2>A nossa história</h2>
-      <p class="lead">
+      <h2 data-i18n="story.title">A nossa história</h2>
+      <p class="lead" data-i18n="story.text">
         Texto sobre como se conheceram, o pedido, e porque querem partilhar este dia com todos.
         Substitui este parágrafo pela vossa história.
       </p>
@@ -54,99 +63,99 @@
 
     <!-- PROGRAMA -->
     <section class="section section--alt" id="programa">
-      <h2>Programa do dia</h2>
+      <h2 data-i18n="schedule.title">Programa do dia</h2>
       <ol class="timeline">
-        <li><time>16:30</time><div><h3>Cerimónia</h3><p>Solar de Pancas</p></div></li>
-        <li><time>17:30</time><div><h3>Cocktail</h3><p>Jardins do Solar</p></div></li>
-        <li><time>19:30</time><div><h3>Jantar</h3><p>Salão principal</p></div></li>
-        <li><time>22:00</time><div><h3>Festa</h3><p>Até o corpo aguentar</p></div></li>
+        <li><time>16:30</time><div><h3 data-i18n="schedule.ceremony">Cerimónia</h3><p>Solar de Pancas</p></div></li>
+        <li><time>17:30</time><div><h3 data-i18n="schedule.cocktail">Cocktail</h3><p data-i18n="schedule.cocktailWhere">Jardins do Solar</p></div></li>
+        <li><time>19:30</time><div><h3 data-i18n="schedule.dinner">Jantar</h3><p data-i18n="schedule.dinnerWhere">Salão principal</p></div></li>
+        <li><time>22:00</time><div><h3 data-i18n="schedule.party">Festa</h3><p data-i18n="schedule.partyWhere">Até o corpo aguentar</p></div></li>
       </ol>
     </section>
 
     <!-- LOCAL -->
     <section class="section" id="local">
-      <h2>Local</h2>
+      <h2 data-i18n="venue.title">Local</h2>
       <div class="cards cards--single">
         <article class="card">
-          <h3>Cerimónia e copo-d'água</h3>
+          <h3 data-i18n="venue.both">Cerimónia e copo-d'água</h3>
           <p>Solar de Pancas<br />Pancas, Alenquer</p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Solar+de+Pancas+Alenquer" target="_blank" rel="noopener">Abrir no mapa →</a>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Solar+de+Pancas+Alenquer" target="_blank" rel="noopener" data-i18n="venue.map">Abrir no mapa →</a>
         </article>
       </div>
-      <p class="note">Estacionamento: informação sobre estacionamento ou transporte organizado.</p>
+      <p class="note" data-i18n="venue.parking">Estacionamento: informação sobre estacionamento ou transporte organizado.</p>
     </section>
 
     <!-- ALOJAMENTO -->
     <section class="section section--alt" id="alojamento">
-      <h2>Alojamento</h2>
-      <p class="lead">Para quem vem de longe, algumas sugestões perto do local:</p>
+      <h2 data-i18n="stay.title">Alojamento</h2>
+      <p class="lead" data-i18n="stay.lead">Para quem vem de longe, algumas sugestões perto do local:</p>
       <div class="cards">
-        <article class="card"><h3>Hotel A</h3><p>5 min do local · código de desconto <code>CASAMENTO</code></p></article>
-        <article class="card"><h3>Hotel B</h3><p>10 min do local</p></article>
-        <article class="card"><h3>Alojamento local C</h3><p>15 min do local</p></article>
+        <article class="card"><h3>Hotel A</h3><p data-i18n="stay.a">5 min do local · código de desconto <code>CASAMENTO</code></p></article>
+        <article class="card"><h3>Hotel B</h3><p data-i18n="stay.b">10 min do local</p></article>
+        <article class="card"><h3 data-i18n="stay.cName">Alojamento local C</h3><p data-i18n="stay.c">15 min do local</p></article>
       </div>
     </section>
 
     <!-- PRESENTES -->
     <section class="section" id="presentes">
-      <h2>Presentes</h2>
-      <p class="lead">
+      <h2 data-i18n="gifts.title">Presentes</h2>
+      <p class="lead" data-i18n="gifts.lead">
         A vossa presença é o melhor presente. Para quem quiser contribuir, criámos uma lista / fundo para a lua de mel.
       </p>
       <div class="card gift">
-        <p class="gift__label">Titular</p>
-        <p class="gift__value">Carolina e Pedro</p>
+        <p class="gift__label" data-i18n="gifts.holder">Titular</p>
+        <p class="gift__value" data-i18n="gifts.holderName">Carolina e Pedro</p>
         <p class="gift__label">IBAN</p>
         <p class="gift__value gift__iban">
           <span id="iban">PT50 0000 0000 0000 0000 0000 0</span>
-          <button type="button" class="copy" data-copy="iban">Copiar</button>
+          <button type="button" class="copy" data-copy="iban" data-i18n="gifts.copy">Copiar</button>
         </p>
-        <p class="gift__label">Banco</p>
+        <p class="gift__label" data-i18n="gifts.bank">Banco</p>
         <p class="gift__value">Nome do banco</p>
       </div>
     </section>
 
     <!-- RSVP -->
     <section class="section section--alt" id="rsvp">
-      <h2>Confirmar presença</h2>
-      <p class="lead">Por favor confirma até <strong data-config="rsvpDeadline">–</strong>.</p>
+      <h2 data-i18n="rsvp.title">Confirmar presença</h2>
+      <p class="lead" data-i18n="rsvp.lead">Por favor confirma até <strong data-config="rsvpDeadline">–</strong>.</p>
 
       <form class="rsvp" id="rsvp-form" novalidate>
         <div class="field">
-          <label for="name">Nome completo *</label>
+          <label for="name" data-i18n="rsvp.name">Nome completo *</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
         </div>
 
         <div class="field">
-          <label for="email">Email ou telemóvel</label>
+          <label for="email" data-i18n="rsvp.contact">Email ou telemóvel</label>
           <input id="email" name="contact" type="text" autocomplete="email" />
         </div>
 
         <fieldset class="field">
-          <legend>Vais estar connosco? *</legend>
-          <label class="choice"><input type="radio" name="attending" value="sim" required /> Sim, lá estarei!</label>
-          <label class="choice"><input type="radio" name="attending" value="nao" /> Infelizmente não posso</label>
+          <legend data-i18n="rsvp.attending">Vais estar connosco? *</legend>
+          <label class="choice"><input type="radio" name="attending" value="sim" required /> <span data-i18n="rsvp.yes">Sim, lá estarei!</span></label>
+          <label class="choice"><input type="radio" name="attending" value="nao" /> <span data-i18n="rsvp.no">Infelizmente não posso</span></label>
         </fieldset>
 
         <div class="if-attending">
           <div class="field">
-            <label for="guests">Quantas pessoas no total (incluindo tu)?</label>
+            <label for="guests" data-i18n="rsvp.guests">Quantas pessoas no total (incluindo tu)?</label>
             <select id="guests" name="guests"></select>
           </div>
 
           <div class="field">
-            <label for="guestNames">Nomes dos acompanhantes</label>
-            <input id="guestNames" name="guestNames" type="text" placeholder="Ex.: Ana Silva, Rui Silva" />
+            <label for="guestNames" data-i18n="rsvp.guestNames">Nomes dos acompanhantes</label>
+            <input id="guestNames" name="guestNames" type="text" placeholder="Ex.: Ana Silva, Rui Silva" data-i18n-placeholder="rsvp.guestNamesPh" />
           </div>
 
           <div class="field">
-            <label for="diet">Restrições alimentares ou alergias</label>
-            <input id="diet" name="diet" type="text" placeholder="Vegetariano, sem glúten, alergia a…" />
+            <label for="diet" data-i18n="rsvp.diet">Restrições alimentares ou alergias</label>
+            <input id="diet" name="diet" type="text" placeholder="Vegetariano, sem glúten, alergia a…" data-i18n-placeholder="rsvp.dietPh" />
           </div>
         </div>
 
         <div class="field">
-          <label for="message">Mensagem para os noivos</label>
+          <label for="message" data-i18n="rsvp.message">Mensagem para os noivos</label>
           <textarea id="message" name="message" rows="3"></textarea>
         </div>
 
@@ -156,24 +165,24 @@
           <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
 
-        <button class="btn" type="submit">Enviar resposta</button>
+        <button class="btn" type="submit" data-i18n="rsvp.submit">Enviar resposta</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
 
     <!-- FAQ -->
     <section class="section" id="faq">
-      <h2>Perguntas frequentes</h2>
-      <details><summary>Qual é o dress code?</summary><p>Formal / cocktail. Substitui pela vossa indicação.</p></details>
-      <details><summary>Posso levar crianças?</summary><p>Resposta sobre crianças.</p></details>
-      <details><summary>Há transporte entre a cerimónia e a quinta?</summary><p>Resposta sobre transporte.</p></details>
-      <details><summary>Até quando devo confirmar?</summary><p>Até <span data-config="rsvpDeadline">–</span>, através do formulário acima.</p></details>
+      <h2 data-i18n="faq.title">Perguntas frequentes</h2>
+      <details><summary data-i18n="faq.q1">Qual é o dress code?</summary><p data-i18n="faq.a1">Formal / cocktail. Substitui pela vossa indicação.</p></details>
+      <details><summary data-i18n="faq.q2">Posso levar crianças?</summary><p data-i18n="faq.a2">Resposta sobre crianças.</p></details>
+      <details><summary data-i18n="faq.q3">Há transporte entre a cerimónia e a quinta?</summary><p data-i18n="faq.a3">Resposta sobre transporte.</p></details>
+      <details><summary data-i18n="faq.q4">Até quando devo confirmar?</summary><p data-i18n="faq.a4">Até <span data-config="rsvpDeadline">–</span>, através do formulário acima.</p></details>
     </section>
 
     <!-- CONTACTOS -->
     <section class="section section--alt" id="contactos">
-      <h2>Contactos</h2>
-      <p class="lead">Alguma dúvida? Fala connosco.</p>
+      <h2 data-i18n="contacts.title">Contactos</h2>
+      <p class="lead" data-i18n="contacts.lead">Alguma dúvida? Fala connosco.</p>
       <div class="cards">
         <article class="card contact">
           <h3>Carolina</h3>
@@ -196,10 +205,11 @@
   <footer class="footer">
     <img class="footer__monogram" src="assets/monograma.png" alt="C &amp; P" width="84" height="66" />
     <p>Carolina &amp; Pedro · 04.07.2027</p>
-    <p class="footer__small">Dúvidas? <a href="#contactos">Fala connosco</a></p>
+    <p class="footer__small" data-i18n="footer.help">Dúvidas? <a href="#contactos">Fala connosco</a></p>
   </footer>
 
-  <script src="config.js?v=3"></script>
-  <script src="script.js?v=3"></script>
+  <script src="config.js?v=4"></script>
+  <script src="translations.js?v=4"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>

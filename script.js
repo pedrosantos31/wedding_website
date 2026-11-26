@@ -1,13 +1,74 @@
 (function () {
   const cfg = window.SITE_CONFIG || {};
+  const T = window.TRANSLATIONS || { messages: {} };
+  const LANGS = ["pt", "en"];
 
-  // Valores de configuração no texto da página
-  document.querySelectorAll("[data-config]").forEach((el) => {
-    const v = cfg[el.dataset.config];
-    if (v) el.textContent = v;
+  // ---------- Idioma ----------
+  // O português vem do próprio HTML: guardamos o texto original de cada elemento
+  // para podermos voltar a ele depois de mudar para inglês.
+  const ATTRS = ["placeholder", "alt", "aria-label", "content"];
+  const nodes = [...document.querySelectorAll("[data-i18n]")].map((el) => ({
+    el,
+    key: el.dataset.i18n,
+    pt: el.innerHTML,
+  }));
+  const attrNodes = [];
+  ATTRS.forEach((attr) => {
+    document.querySelectorAll(`[data-i18n-${attr}]`).forEach((el) => {
+      attrNodes.push({ el, attr, key: el.getAttribute(`data-i18n-${attr}`), pt: el.getAttribute(attr) });
+    });
   });
+  const ptTitle = document.title;
 
-  // Menu móvel
+  function pickLang() {
+    const fromUrl = new URLSearchParams(location.search).get("lang");
+    if (LANGS.includes(fromUrl)) return fromUrl;
+    try {
+      const saved = localStorage.getItem("lang");
+      if (LANGS.includes(saved)) return saved;
+    } catch {}
+    const nav = (navigator.languages || [navigator.language || "pt"]).join(",").toLowerCase();
+    return nav.startsWith("pt") ? "pt" : "en";
+  }
+
+  let lang = pickLang();
+
+  function msg(key) {
+    const m = T.messages || {};
+    return (m[lang] && m[lang][key]) || (m.pt && m.pt[key]) || key;
+  }
+
+  function fillConfig() {
+    document.querySelectorAll("[data-config]").forEach((el) => {
+      let v = cfg[el.dataset.config];
+      if (v && typeof v === "object") v = v[lang] || v.pt;
+      if (v) el.textContent = v;
+    });
+  }
+
+  function applyLang(next, save) {
+    lang = next;
+    const dict = (lang !== "pt" && T[lang]) || {};
+    nodes.forEach((n) => (n.el.innerHTML = dict[n.key] != null ? dict[n.key] : n.pt));
+    attrNodes.forEach((n) => n.el.setAttribute(n.attr, dict[n.key] != null ? dict[n.key] : n.pt));
+    document.documentElement.lang = lang;
+    document.title = ptTitle;
+    document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    fillConfig();
+    status.textContent = "";
+    if (save) {
+      try { localStorage.setItem("lang", lang); } catch {}
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null, "", url);
+    }
+  }
+
+  document.querySelectorAll("[data-lang]").forEach((b) =>
+    b.addEventListener("click", () => applyLang(b.dataset.lang, true))
+  );
+
+  // ---------- Menu móvel ----------
   const toggle = document.querySelector(".nav__toggle");
   const menu = document.getElementById("menu");
   toggle.addEventListener("click", () => {
@@ -21,21 +82,22 @@
     }
   });
 
-  // Botões "Copiar" (ex.: IBAN)
+  // ---------- Botões "Copiar" (ex.: IBAN) ----------
   document.querySelectorAll("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {
+      const original = btn.innerHTML;
       const text = document.getElementById(btn.dataset.copy).textContent.replace(/\s+/g, "");
       try {
         await navigator.clipboard.writeText(text);
-        btn.textContent = "Copiado ✓";
+        btn.textContent = msg("copied");
       } catch {
-        btn.textContent = "Seleciona e copia";
+        btn.textContent = msg("copyFallback");
       }
-      setTimeout(() => (btn.textContent = "Copiar"), 2000);
+      setTimeout(() => (btn.innerHTML = original), 2000);
     });
   });
 
-  // Contagem decrescente
+  // ---------- Contagem decrescente ----------
   const target = new Date(cfg.weddingDate).getTime();
   const units = {
     days: document.querySelector('[data-unit="days"]'),
@@ -53,7 +115,7 @@
     setInterval(tick, 30000);
   }
 
-  // RSVP
+  // ---------- RSVP ----------
   const form = document.getElementById("rsvp-form");
   const status = document.getElementById("form-status");
   const attendingBlock = form.querySelector(".if-attending");
@@ -70,8 +132,8 @@
     })
   );
 
-  function setStatus(msg, kind) {
-    status.textContent = msg;
+  function setStatus(text, kind) {
+    status.textContent = text;
     status.className = "form-status " + (kind || "");
   }
 
@@ -83,19 +145,19 @@
     const attending = form.elements.attending.value;
     if (!name) form.elements.name.classList.add("invalid");
     if (!name || !attending) {
-      setStatus("Por favor indica o teu nome e se vais estar presente.", "err");
+      setStatus(msg("missing"), "err");
       return;
     }
 
     // Bot preencheu o campo-armadilha: finge sucesso e não envia.
     if (form.elements.website.value) {
-      setStatus("Obrigado! A tua resposta foi registada.", "ok");
+      setStatus(msg("thanks"), "ok");
       form.reset();
       return;
     }
 
     if (!cfg.rsvpEndpoint) {
-      setStatus("O formulário ainda não está ligado (falta o rsvpEndpoint em config.js).", "err");
+      setStatus(msg("notConfigured"), "err");
       return;
     }
 
@@ -108,11 +170,12 @@
       guestNames: going ? form.elements.guestNames.value.trim() : "",
       diet: going ? form.elements.diet.value.trim() : "",
       message: form.elements.message.value.trim(),
+      lang: lang.toUpperCase(),
     };
 
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
-    setStatus("A enviar…");
+    setStatus(msg("sending"));
 
     try {
       // Sem cabeçalho Content-Type personalizado (text/plain) para evitar o preflight CORS,
@@ -123,17 +186,16 @@
       });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || "Erro desconhecido");
-      setStatus(
-        going ? "Obrigado! Mal podemos esperar por te ver. 🎉" : "Obrigado por nos avisares. Vamos sentir a tua falta!",
-        "ok"
-      );
+      setStatus(going ? msg("thanksYes") : msg("thanksNo"), "ok");
       form.reset();
       attendingBlock.hidden = true;
     } catch (err) {
       console.error(err);
-      setStatus("Não foi possível enviar. Tenta novamente ou fala connosco diretamente.", "err");
+      setStatus(msg("error"), "err");
     } finally {
       btn.disabled = false;
     }
   });
+
+  applyLang(lang, false);
 })();

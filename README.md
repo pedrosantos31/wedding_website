@@ -9,12 +9,20 @@ Site estático (HTML/CSS/JS, sem build) alojado no GitHub Pages, com formulário
 | `index.html` | Todo o conteúdo do site (textos, programa, locais, FAQ) |
 | `styles.css` | Cores, tipos de letra e layout (as cores estão no topo, em `:root`) |
 | `config.js` | Data do casamento, data limite do RSVP, URL do RSVP, nº máximo de pessoas |
-| `script.js` | Menu móvel, contagem decrescente, envio do formulário |
+| `translations.js` | Textos em inglês (o português está no `index.html`) |
+| `script.js` | Idioma, menu móvel, contagem decrescente, envio do formulário |
 | `apps-script/Code.gs` | Script a colar na Google Sheet que recebe as respostas |
 
 ## Ver localmente
 
 Abre `index.html` no browser, ou corre `python -m http.server 8000` nesta pasta e vai a http://localhost:8000.
+
+## Português / Inglês
+
+- O botão **PT | EN** no menu troca o idioma. Na primeira visita o site escolhe pelo idioma do browser; depois lembra a escolha.
+- Link direto em inglês: `…/?lang=en` (em português: `…/?lang=pt`).
+- Para mudar um texto: o português está no `index.html`; o inglês está em `translations.js`, na chave com o mesmo nome do atributo `data-i18n`.
+- Texto novo a traduzir: põe `data-i18n="secao.nome"` no elemento do HTML e acrescenta `"secao.nome": "English text"` em `translations.js`.
 
 ## RSVP → Google Sheet
 

@@ -159,3 +159,16 @@ details p { color: var(--muted); margin: 10px 0 0; }
 .section h2::after { content: ""; display: block; width: 56px; height: 1px; background: var(--accent); margin: 16px auto 0; }
 
 .footer__monogram { width: 84px; height: auto; margin-bottom: 8px; }
+
+/* SELETOR DE IDIOMA */
+.nav__links { margin-left: auto; }
+.lang { display: flex; align-items: center; gap: 4px; margin-left: 20px; font-size: 0.85rem; color: var(--line); }
+.lang button {
+  background: none; border: 0; padding: 4px 4px; cursor: pointer;
+  font: 500 0.85rem var(--sans); color: var(--muted); letter-spacing: 0.05em;
+}
+.lang button[aria-pressed="true"] { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.lang button:hover { color: var(--ink); }
+@media (max-width: 860px) {
+  .lang { margin-left: auto; margin-right: 12px; }
+}
