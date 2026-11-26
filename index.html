@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nome 1 &amp; Nome 2 · 04.07.2027</title>
+  <meta name="description" content="O nosso casamento — informações, programa e confirmação de presença." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" id="topo">
+    <a class="nav__brand" href="#topo">N1 <span>&amp;</span> N2</a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav id="menu" class="nav__links">
+      <a href="#historia">A nossa história</a>
+      <a href="#programa">Programa</a>
+      <a href="#local">Local</a>
+      <a href="#alojamento">Alojamento</a>
+      <a href="#presentes">Presentes</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contactos">Contactos</a>
+      <a href="#rsvp" class="nav__cta">Confirmar presença</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero__eyebrow">Vamos casar!</p>
+      <h1 class="hero__title">Nome 1 <span>&amp;</span> Nome 2</h1>
+      <p class="hero__date">4 de julho de 2027 · Local, Cidade</p>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div><strong data-unit="days">–</strong><span>dias</span></div>
+        <div><strong data-unit="hours">–</strong><span>horas</span></div>
+        <div><strong data-unit="minutes">–</strong><span>minutos</span></div>
+      </div>
+      <a class="btn" href="#rsvp">Confirmar presença</a>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section class="section" id="historia">
+      <h2>A nossa história</h2>
+      <p class="lead">
+        Texto sobre como se conheceram, o pedido, e porque querem partilhar este dia com todos.
+        Substitui este parágrafo pela vossa história.
+      </p>
+    </section>
+
+    <!-- PROGRAMA -->
+    <section class="section section--alt" id="programa">
+      <h2>Programa do dia</h2>
+      <ol class="timeline">
+        <li><time>16:30</time><div><h3>Cerimónia</h3><p>Igreja / local da cerimónia</p></div></li>
+        <li><time>17:30</time><div><h3>Cocktail</h3><p>Jardins da quinta</p></div></li>
+        <li><time>19:30</time><div><h3>Jantar</h3><p>Salão principal</p></div></li>
+        <li><time>22:00</time><div><h3>Festa</h3><p>Até o corpo aguentar</p></div></li>
+      </ol>
+    </section>
+
+    <!-- LOCAL -->
+    <section class="section" id="local">
+      <h2>Local</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Cerimónia</h3>
+          <p>Nome do local<br />Morada, Código postal, Cidade</p>
+          <a class="link" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no mapa →</a>
+        </article>
+        <article class="card">
+          <h3>Copo-d'água</h3>
+          <p>Nome da quinta<br />Morada, Código postal, Cidade</p>
+          <a class="link" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no mapa →</a>
+        </article>
+      </div>
+      <p class="note">Estacionamento: informação sobre estacionamento ou transporte organizado.</p>
+    </section>
+
+    <!-- ALOJAMENTO -->
+    <section class="section section--alt" id="alojamento">
+      <h2>Alojamento</h2>
+      <p class="lead">Para quem vem de longe, algumas sugestões perto do local:</p>
+      <div class="cards">
+        <article class="card"><h3>Hotel A</h3><p>5 min do local · código de desconto <code>CASAMENTO</code></p></article>
+        <article class="card"><h3>Hotel B</h3><p>10 min do local</p></article>
+        <article class="card"><h3>Alojamento local C</h3><p>15 min do local</p></article>
+      </div>
+    </section>
+
+    <!-- PRESENTES -->
+    <section class="section" id="presentes">
+      <h2>Presentes</h2>
+      <p class="lead">
+        A vossa presença é o melhor presente. Para quem quiser contribuir, criámos uma lista / fundo para a lua de mel.
+      </p>
+      <div class="card gift">
+        <p class="gift__label">Titular</p>
+        <p class="gift__value">Nome 1 e Nome 2</p>
+        <p class="gift__label">IBAN</p>
+        <p class="gift__value gift__iban">
+          <span id="iban">PT50 0000 0000 0000 0000 0000 0</span>
+          <button type="button" class="copy" data-copy="iban">Copiar</button>
+        </p>
+        <p class="gift__label">Banco</p>
+        <p class="gift__value">Nome do banco</p>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section section--alt" id="rsvp">
+      <h2>Confirmar presença</h2>
+      <p class="lead">Por favor confirma até <strong data-config="rsvpDeadline">–</strong>.</p>
+
+      <form class="rsvp" id="rsvp-form" novalidate>
+        <div class="field">
+          <label for="name">Nome completo *</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email ou telemóvel</label>
+          <input id="email" name="contact" type="text" autocomplete="email" />
+        </div>
+
+        <fieldset class="field">
+          <legend>Vais estar connosco? *</legend>
+          <label class="choice"><input type="radio" name="attending" value="sim" required /> Sim, lá estarei!</label>
+          <label class="choice"><input type="radio" name="attending" value="nao" /> Infelizmente não posso</label>
+        </fieldset>
+
+        <div class="if-attending">
+          <div class="field">
+            <label for="guests">Quantas pessoas no total (incluindo tu)?</label>
+            <select id="guests" name="guests"></select>
+          </div>
+
+          <div class="field">
+            <label for="guestNames">Nomes dos acompanhantes</label>
+            <input id="guestNames" name="guestNames" type="text" placeholder="Ex.: Ana Silva, Rui Silva" />
+          </div>
+
+          <div class="field">
+            <label for="diet">Restrições alimentares ou alergias</label>
+            <input id="diet" name="diet" type="text" placeholder="Vegetariano, sem glúten, alergia a…" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Mensagem para os noivos</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+        </div>
+
+        <!-- Campo-armadilha para bots: invisível para pessoas. -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Não preencher</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button class="btn" type="submit">Enviar resposta</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <h2>Perguntas frequentes</h2>
+      <details><summary>Qual é o dress code?</summary><p>Formal / cocktail. Substitui pela vossa indicação.</p></details>
+      <details><summary>Posso levar crianças?</summary><p>Resposta sobre crianças.</p></details>
+      <details><summary>Há transporte entre a cerimónia e a quinta?</summary><p>Resposta sobre transporte.</p></details>
+      <details><summary>Até quando devo confirmar?</summary><p>Até <span data-config="rsvpDeadline">–</span>, através do formulário acima.</p></details>
+    </section>
+
+    <!-- CONTACTOS -->
+    <section class="section section--alt" id="contactos">
+      <h2>Contactos</h2>
+      <p class="lead">Alguma dúvida? Fala connosco.</p>
+      <div class="cards">
+        <article class="card contact">
+          <h3>Nome 1</h3>
+          <a href="tel:+351900000000">+351 900 000 000</a>
+          <a href="https://wa.me/351900000000" target="_blank" rel="noopener">WhatsApp →</a>
+        </article>
+        <article class="card contact">
+          <h3>Nome 2</h3>
+          <a href="tel:+351910000000">+351 910 000 000</a>
+          <a href="https://wa.me/351910000000" target="_blank" rel="noopener">WhatsApp →</a>
+        </article>
+        <article class="card contact">
+          <h3>Email</h3>
+          <a href="mailto:email@exemplo.pt">email@exemplo.pt</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Nome 1 &amp; Nome 2 · 04.07.2027</p>
+    <p class="footer__small">Dúvidas? <a href="#contactos">Fala connosco</a></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
