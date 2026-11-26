@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nome 1 &amp; Nome 2 · 04.07.2027</title>
+  <title>Carolina &amp; Pedro · 04.07.2027</title>
   <meta name="description" content="O nosso casamento — informações, programa e confirmação de presença." />
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Caslon+Display&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="nav" id="topo">
-    <a class="nav__brand" href="#topo">N1 <span>&amp;</span> N2</a>
+    <a class="nav__brand" href="#topo"><img src="assets/monograma.png" alt="C &amp; P" /></a>
     <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu" class="nav__links">
       <a href="#historia">A nossa história</a>
@@ -30,15 +31,24 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <p class="hero__eyebrow">Vamos casar!</p>
-      <h1 class="hero__title">Nome 1 <span>&amp;</span> Nome 2</h1>
-      <p class="hero__date">4 de julho de 2027 · Local, Cidade</p>
+      <div class="invite"><div class="invite__inner">
+        <img class="invite__solar" src="assets/solar.png" alt="Desenho do Solar de Pancas" />
+        <h1 class="invite__names">Carolina &amp; Pedro</h1>
+        <p class="invite__text">Têm o prazer de vos convidar para a celebração do seu casamento</p>
+        <div class="invite__date">
+          <span class="invite__side">Domingo</span>
+          <span class="invite__day"><small>Julho</small><strong>4</strong><small class="invite__year">2027</small></span>
+          <span class="invite__side">16:30h</span>
+        </div>
+        <p class="invite__place">Solar de Pancas</p>
+        <p class="invite__region">Alenquer, Portugal</p>
+        <a class="pill" href="#rsvp">Confirmar até 4 de maio</a>
+      </div></div>
       <div class="countdown" id="countdown" aria-live="polite">
         <div><strong data-unit="days">–</strong><span>dias</span></div>
         <div><strong data-unit="hours">–</strong><span>horas</span></div>
         <div><strong data-unit="minutes">–</strong><span>minutos</span></div>
       </div>
-      <a class="btn" href="#rsvp">Confirmar presença</a>
     </section>
 
     <!-- HISTÓRIA -->
@@ -54,8 +64,8 @@
     <section class="section section--alt" id="programa">
       <h2>Programa do dia</h2>
       <ol class="timeline">
-        <li><time>16:30</time><div><h3>Cerimónia</h3><p>Igreja / local da cerimónia</p></div></li>
-        <li><time>17:30</time><div><h3>Cocktail</h3><p>Jardins da quinta</p></div></li>
+        <li><time>16:30</time><div><h3>Cerimónia</h3><p>Solar de Pancas</p></div></li>
+        <li><time>17:30</time><div><h3>Cocktail</h3><p>Jardins do Solar</p></div></li>
         <li><time>19:30</time><div><h3>Jantar</h3><p>Salão principal</p></div></li>
         <li><time>22:00</time><div><h3>Festa</h3><p>Até o corpo aguentar</p></div></li>
       </ol>
@@ -64,16 +74,11 @@
     <!-- LOCAL -->
     <section class="section" id="local">
       <h2>Local</h2>
-      <div class="cards">
+      <div class="cards cards--single">
         <article class="card">
-          <h3>Cerimónia</h3>
-          <p>Nome do local<br />Morada, Código postal, Cidade</p>
-          <a class="link" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no mapa →</a>
-        </article>
-        <article class="card">
-          <h3>Copo-d'água</h3>
-          <p>Nome da quinta<br />Morada, Código postal, Cidade</p>
-          <a class="link" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no mapa →</a>
+          <h3>Cerimónia e copo-d'água</h3>
+          <p>Solar de Pancas<br />Pancas, Alenquer</p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Solar+de+Pancas+Alenquer" target="_blank" rel="noopener">Abrir no mapa →</a>
         </article>
       </div>
       <p class="note">Estacionamento: informação sobre estacionamento ou transporte organizado.</p>
@@ -98,7 +103,7 @@
       </p>
       <div class="card gift">
         <p class="gift__label">Titular</p>
-        <p class="gift__value">Nome 1 e Nome 2</p>
+        <p class="gift__value">Carolina e Pedro</p>
         <p class="gift__label">IBAN</p>
         <p class="gift__value gift__iban">
           <span id="iban">PT50 0000 0000 0000 0000 0000 0</span>
@@ -179,12 +184,12 @@
       <p class="lead">Alguma dúvida? Fala connosco.</p>
       <div class="cards">
         <article class="card contact">
-          <h3>Nome 1</h3>
+          <h3>Carolina</h3>
           <a href="tel:+351900000000">+351 900 000 000</a>
           <a href="https://wa.me/351900000000" target="_blank" rel="noopener">WhatsApp →</a>
         </article>
         <article class="card contact">
-          <h3>Nome 2</h3>
+          <h3>Pedro</h3>
           <a href="tel:+351910000000">+351 910 000 000</a>
           <a href="https://wa.me/351910000000" target="_blank" rel="noopener">WhatsApp →</a>
         </article>
@@ -197,7 +202,8 @@
   </main>
 
   <footer class="footer">
-    <p>Nome 1 &amp; Nome 2 · 04.07.2027</p>
+    <img class="footer__monogram" src="assets/monograma.png" alt="C &amp; P" />
+    <p>Carolina &amp; Pedro · 04.07.2027</p>
     <p class="footer__small">Dúvidas? <a href="#contactos">Fala connosco</a></p>
   </footer>
 
